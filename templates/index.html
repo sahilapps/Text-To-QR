@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Text To QR Code Generator | Mini Project Kumar Sahil</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="all-content">
+
+                {% if image_avilable %}
+                    <h2>Converted QR-Code</h2>
+                    <a class="go-back" href="/">Go Back</a>
+                {% else %}
+                    <h2>Write Any thing that will converted to QR Code </h2>
+                    <p>scan the QR-Code to read the text</p>
+                {% endif %}
+
+                {% if image_avilable %}
+                    <div class="image">
+                        <img src="{{ url_for('static', filename='.svg') }}" alt="Generated QrCode">
+                    </div>
+                {% else %}
+                    <form method="post">
+                        <label for="input-text">Enter Your Text</label>
+                        <textarea name="input_text" id="input-text"></textarea>
+                        <button type="submit">Convert Text</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+
+</html>
